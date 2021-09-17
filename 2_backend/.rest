@@ -18,3 +18,14 @@ Content-Type: application/json
 ### DELETE user
 DELETE http://localhost:5000/api/users/61443f85a35e00b183a52e6f
 Content-Type: application/json
+
+
+### PUT (updatate)
+PUT http://localhost:5000/api/users/61445669509fdf68912a08fe
+Content-Type: application/json
+
+{
+    "name": "Petrukas",
+    "age":55,
+    "email":"petras@gmail.com"
+}

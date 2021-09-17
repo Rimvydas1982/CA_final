@@ -16,9 +16,6 @@ const PORT = process.env.PORT;
 app.use(cors());
 app.use(express.json());
 
-//Routes
-app.get('/', (req, res) => res.send('Super API is running...'));
-
 //--Connecting to MONGO DB
 mongoose
   .connect(process.env.MONGO_DB)
@@ -28,6 +25,10 @@ mongoose
     app.listen(PORT, () => console.log(`Server is running on PORT:${PORT}`));
   })
   .catch((err) => console.log(err));
+
+//--Routes
+
+app.get('/', (req, res) => res.send('Super API is running...'));
 
 //POST new user
 app.post('/api/users', async (req, res) => {
@@ -52,6 +53,21 @@ app.get('/api/users', async (req, res) => {
     res.json(users);
   } catch (error) {
     res.json({ mesage: 'Negalima gauti vartotoju' });
+  }
+});
+
+//UPDATE user
+app.put('/api/users/:userId', async (req, res) => {
+  try {
+    const updatedUsers = await User.updateOne(
+      { _id: req.params.userId },
+      {
+        $set: { name: req.body.name, age: req.body.age, email: req.body.email },
+      }
+    );
+    res.json(updatedUsers);
+  } catch (error) {
+    res.json({ message: 'Negalima atnaujinti' });
   }
 });
 
