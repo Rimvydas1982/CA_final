@@ -5,11 +5,10 @@ import Users from '../components/Users';
 
 const AdminPage = () => {
   return (
-    <main className={style.main}>
-      <h1 className={style.styledh1}>Vartotojų Tvarkyklė</h1>
+    <section className={style.section}>
       <Users />
       <PostUser />
-    </main>
+    </section>
   );
 };
 

@@ -9,7 +9,6 @@ const UpdateUser = () => {
   return (
     <div>
       <h2>Atnaujinti vartotojo duomenis</h2>
-
       <form>
         <div>
           <label htmlFor='name'>Vardas</label>
@@ -29,7 +28,6 @@ const UpdateUser = () => {
             required
           />
         </div>
-
         <div>
           <label htmlFor='model'>El.pastas</label>
           <input
