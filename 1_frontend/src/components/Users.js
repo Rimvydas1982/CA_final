@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import User from './User';
+import style from './User.module.css';
 
 const Users = () => {
   //Hooks
@@ -22,11 +23,13 @@ const Users = () => {
       .then((res) => console.log(res));
   };
   return (
-    <div>
-      <h1>Visi vartotojai</h1>
-      {users.map((item) => (
-        <User item={item} key={item._id} action={deleteHandler} />
-      ))}
+    <div className={style.centered}>
+      <h2>Visi vartotojai</h2>
+      <section className={style.section}>
+        {users.map((item) => (
+          <User item={item} key={item._id} action={deleteHandler} />
+        ))}
+      </section>
     </div>
   );
 };

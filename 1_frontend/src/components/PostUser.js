@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import formstyle from './PostUser.module.css';
 
 const PostUser = () => {
   //Hooks
@@ -22,27 +23,37 @@ const PostUser = () => {
       .then((response) => {
         console.log(response);
         setMessage(response.data.message);
+        setName('');
+        setAge('');
+        setEmail('');
+        setPassword('');
       })
       .catch((err) => {
         console.log(err);
       });
   };
   return (
-    <div>
-      <h1>Prideti nauja vartotoja</h1>
-      <form onSubmit={formHandler}>
-        <div>
-          <label htmlFor='name'>Vardas</label>
+    <div className={formstyle.formcontainer}>
+      <h2>Prideti nauja vartotoja</h2>
+      <form className={formstyle.form} onSubmit={formHandler}>
+        <div className={formstyle.formControl}>
+          <label className={formstyle.formLabel} htmlFor='name'>
+            Vardas
+          </label>
           <input
+            className={formstyle.formInput}
             type='text'
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor='age'>Amzius</label>
+        <div className={formstyle.formControl}>
+          <label className={formstyle.formLabel} htmlFor='age'>
+            Amzius
+          </label>
           <input
+            className={formstyle.formInput}
             type='number'
             value={age}
             onChange={(e) => setAge(e.target.value)}
@@ -50,18 +61,24 @@ const PostUser = () => {
           />
         </div>
 
-        <div>
-          <label htmlFor='model'>El.pastas</label>
+        <div className={formstyle.formControl}>
+          <label className={formstyle.formLabel} htmlFor='model'>
+            El.pastas
+          </label>
           <input
+            className={formstyle.formInput}
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <div>
-          <label htmlFor='password'>Slaptazodis</label>
+        <div className={formstyle.formControl}>
+          <label className={formstyle.formLabel} htmlFor='password'>
+            Slaptazodis
+          </label>
           <input
+            className={formstyle.formInput}
             type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -69,11 +86,15 @@ const PostUser = () => {
           />
         </div>
 
-        <div>
-          <input type='submit' value='Prideti' />
+        <div className={formstyle.formControl}>
+          <input
+            className={formstyle.btnSubmit}
+            type='submit'
+            value='Prideti'
+          />
         </div>
       </form>
-      {message && <h5>{message}</h5>}
+      {message && <h5 className={formstyle.formMessage}>{message}</h5>}
     </div>
   );
 };

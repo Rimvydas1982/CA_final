@@ -3,9 +3,9 @@ import React from 'react';
 const User = ({ item, action }) => {
   return (
     <div key={item._id}>
-      <h3>Vardas:{item.name}</h3>
-      <h4>El.pastas:{item.email}</h4>
-      <h5>Amzius:{item.age} metai</h5>
+      <h4>{item.name}</h4>
+      <p>El.pastas:{item.email}</p>
+      <p>Amzius:{item.age} metai</p>
       <button onClick={() => action(item._id)}>Istrinti vartotoja</button>
     </div>
   );
