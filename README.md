@@ -1,3 +1,5 @@
+# Sukurta full-stack aplikacija, kurioje galima kurti,perziureti,atnaujinti ir istrinti vartotojus.
+
 # Aplikacijai reikalingos programos,instaliavimo ir projekto paleidimo programos:
 
 Aplikacijos kliento puse sukurta naudojant React.js biblioteka;
