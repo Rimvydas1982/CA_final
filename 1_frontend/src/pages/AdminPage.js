@@ -1,4 +1,5 @@
 import React from 'react';
+import PostUser from '../components/PostUser';
 import Users from '../components/Users';
 
 const AdminPage = () => {
@@ -6,6 +7,7 @@ const AdminPage = () => {
     <div>
       <h1>VARTOTOJŲ TVARKYKLĖ</h1>
       <Users />
+      <PostUser />
     </div>
   );
 };
