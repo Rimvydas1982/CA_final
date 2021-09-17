@@ -4,6 +4,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+//Import user
+const User = require('./model/userModel');
 
 const app = express();
 dotenv.config();
@@ -26,3 +28,39 @@ mongoose
     app.listen(PORT, () => console.log(`Server is running on PORT:${PORT}`));
   })
   .catch((err) => console.log(err));
+
+//POST new user
+app.post('/api/users', async (req, res) => {
+  const user = new User({
+    name: req.body.name,
+    age: req.body.age,
+    email: req.body.email,
+    password: req.body.password,
+  });
+  try {
+    const newUser = await user.save();
+    res.json({ newUser, message: 'Naujas vartotojas pridetas' });
+  } catch (err) {
+    res.json({ message: 'Nepavyko prideti vartotojo' });
+  }
+});
+
+//GET all users
+app.get('/api/users', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    res.json({ mesage: 'Negalima gauti vartotoju' });
+  }
+});
+
+//DELETE user
+app.delete('/api/users/:userId', async (req, res) => {
+  try {
+    const findedUserToDelete = await User.findByIdAndDelete(req.params.userId);
+    res.json(findedUserToDelete);
+  } catch (error) {
+    res.json({ message: 'Nepavyko rasti vartotojo' });
+  }
+});
